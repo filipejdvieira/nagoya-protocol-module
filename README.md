@@ -32,7 +32,7 @@ The questions test the EU procedure, not the national law of each country. Where
 ## Ways to use it
 
 - **Online:** open the [module link](https://filipejdvieira.github.io/nagoya-protocol-module/).
-- **In your own learning platform:** download the `.h5p` file from this repository and upload it to Moodle, ILIAS, OpenOlat, WordPress or any other system that supports H5P.
+- **In your own learning platform:** the `.h5p` file can be imported into Moodle, ILIAS, OpenOlat, WordPress or any other system that supports H5P. Please get in touch before reusing it.
 - **Offline:** download the repository as a ZIP (green **Code** button → **Download ZIP**) and open `index.html`.
 
 ## Feedback
