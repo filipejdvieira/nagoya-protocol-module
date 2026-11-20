@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before You Use That Strain – Nagoya Protocol Essentials for Microbial Strains</title>
+<meta name="description" content="A free 15-minute interactive module for researchers who receive microbial strains: when the EU Nagoya Protocol rules apply, and what to do.">
+<meta name="author" content="Filipe José Dias Vieira">
+<meta property="og:title" content="Before You Use That Strain – Nagoya Protocol Essentials">
+<meta property="og:description" content="A free 15-minute interactive module for researchers who receive microbial strains.">
+<style>
+  :root {
+    --teal: #006666;
+    --teal-dark: #004d4d;
+    --teal-tint: #e8f3f3;
+    --ink: #1d2327;
+    --muted: #5b6770;
+    --line: #dde3e6;
+    --bg: #f7f9fa;
+    --card: #ffffff;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  a { color: var(--teal); }
+  a:hover { color: var(--teal-dark); }
+  :focus-visible { outline: 3px solid #f2a900; outline-offset: 2px; }
+  .skip {
+    position: absolute; left: -999px; top: 0;
+    background: var(--teal); color: #fff; padding: 8px 14px; z-index: 10;
+  }
+  .skip:focus { left: 8px; top: 8px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    background: var(--card);
+    border-bottom: 4px solid var(--teal);
+    padding: 48px 0 36px;
+  }
+  .eyebrow {
+    margin: 0 0 10px;
+    font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--teal);
+  }
+  h1 {
+    margin: 0 0 14px;
+    font-size: clamp(28px, 4.2vw, 44px);
+    line-height: 1.15;
+    font-weight: 700;
+    max-width: 22ch;
+  }
+  .lead { margin: 0 0 22px; font-size: 19px; color: var(--muted); max-width: 62ch; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; padding: 0; list-style: none; }
+  .meta li {
+    background: var(--teal-tint); color: var(--teal-dark);
+    font-size: 14px; font-weight: 600;
+    padding: 4px 12px; border-radius: 999px;
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 600; font-size: 16px;
+    padding: 11px 20px; border-radius: 8px; border: 2px solid var(--teal);
+  }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); color: #fff; }
+  .btn-ghost { background: transparent; color: var(--teal); }
+  .btn-ghost:hover { background: var(--teal-tint); }
+
+  main { padding: 44px 0 56px; }
+  section { margin: 0 0 44px; }
+  h2 { font-size: 24px; margin: 0 0 16px; line-height: 1.25; }
+  h3 { font-size: 18px; margin: 0 0 8px; color: var(--teal-dark); }
+
+  .player {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  }
+  .player iframe {
+    display: block; width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 320px;
+    border: 0; border-radius: 6px;
+    background: #fff;
+  }
+  .player-note { margin: 10px 4px 0; font-size: 14px; color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 22px 18px;
+  }
+  .card p, .card ul { margin: 0; }
+  .card ul { padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+
+  .steps { counter-reset: step; list-style: none; margin: 0; padding: 0; }
+  .steps li { position: relative; padding-left: 38px; margin-bottom: 10px; }
+  .steps li::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 0; top: 1px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--teal); color: #fff; font-size: 14px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .feedback {
+    background: var(--teal); color: #fff; border-radius: var(--radius);
+    padding: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+  }
+  .feedback h2 { color: #fff; margin: 0 0 4px; }
+  .feedback p { margin: 0; opacity: .92; }
+  .feedback .btn { background: #fff; color: var(--teal-dark); border-color: #fff; }
+  .feedback .btn:hover { background: var(--teal-tint); }
+
+  details {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 0 22px;
+  }
+  summary {
+    cursor: pointer; font-weight: 600; padding: 16px 0; list-style-position: outside;
+  }
+  details[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .transcript h3 { margin-top: 18px; }
+  .transcript p { margin: 0 0 10px; max-width: 75ch; }
+  .transcript .skipnote { color: var(--muted); font-style: italic; }
+
+  .sources { padding-left: 20px; margin: 0; }
+  .sources li { margin-bottom: 8px; }
+  .disclaimer {
+    border-left: 4px solid var(--teal); background: var(--card);
+    padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0; margin: 0;
+  }
+
+  footer {
+    border-top: 1px solid var(--line); background: var(--card);
+    padding: 26px 0; font-size: 15px; color: var(--muted);
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  footer p { margin: 0; }
+
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr; }
+    header.hero { padding: 32px 0 26px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#module">Skip to the module</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Free e-learning module · EU access and benefit-sharing</p>
+    <h1>Before You Use That Strain: Nagoya Protocol Essentials for Microbial Strains</h1>
+    <p class="lead">Someone hands you a box of bacterial isolates from abroad. Can you start working with them on Monday? This short, interactive module shows you how to decide whether the EU Nagoya rules apply to a strain, and what to do if they do.</p>
+    <ul class="meta" aria-label="Module facts">
+      <li>About 15 minutes</li>
+      <li>About 7 minutes of narration</li>
+      <li>Case-based questions with feedback</li>
+      <li>No login needed</li>
+      <li>English</li>
+    </ul>
+    <div class="actions">
+      <a class="btn btn-primary" href="#module">Start the module</a>
+      <a class="btn btn-ghost" href="Nagoya_protocol_module.html" target="_blank" rel="noopener">Open full screen ↗</a>
+      <a class="btn btn-ghost" href="Nagoya_protocol_module.h5p" download>Download .h5p</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="module" aria-labelledby="module-h">
+    <h2 id="module-h">The module</h2>
+    <div class="player">
+      <iframe src="Nagoya_protocol_module.html"
+              title="Interactive module: Before You Use That Strain"
+              allow="fullscreen; autoplay" allowfullscreen loading="lazy"></iframe>
+      <p class="player-note">Turn your sound on for slides 1–10 and 21, or read the transcript below. Best on a laptop or tablet; on a phone, turn your screen sideways or use “Open full screen”.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="about-h">
+    <h2 id="about-h" class="visually-hidden" hidden>About the module</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Who it is for</h3>
+        <p>PhD students, postdocs, technicians and group leaders in the EU who order, exchange or are sent microbial strains, and the research managers, compliance officers and collection staff who support them.</p>
+      </div>
+      <div class="card">
+        <h3>What you will learn</h3>
+        <ul>
+          <li>How to check whether a strain is covered by the EU rules</li>
+          <li>Which documents to seek, keep and pass on</li>
+          <li>When and where to declare</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>How it works</h3>
+        <ol class="steps">
+          <li>Narrated slides explain the rules (slides 1–10).</li>
+          <li>You apply them to realistic cases, with feedback on every answer (slides 11–20).</li>
+          <li>A wrap-up gives you a checklist for your own strains (slide 21).</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback-section" aria-labelledby="feedback-h">
+    <div class="feedback">
+      <div>
+        <h2 id="feedback-h">Tried it? Tell me what you think</h2>
+        <p>Two minutes, anonymous. Your answers help improve the module.</p>
+      </div>
+      <a id="feedback-link" class="btn" href="#" target="_blank" rel="noopener">Give feedback</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="transcript-h">
+    <h2 id="transcript-h">Transcript</h2>
+    <details class="transcript">
+      <summary>Read the narration (slides 1–10 and 21)</summary>
+
+      <h3>Slide 1 – The box</h3>
+      <p>Welcome to the module “Before you use that strain: Nagoya Protocol essentials for microbial strains”.</p>
+      <p>Imagine it’s Friday afternoon. Your new postdoc has just joined the lab, and she’s brought a box of bacterial isolates from her previous lab abroad. The label says <em>Spain, 2019</em>. They look promising, and you’d like to start working with them on Monday.</p>
+      <p>Can you? Pick an answer and click the “Check” button.</p>
+
+      <h3>Slide 2 – Learning goals</h3>
+      <p>In the next fifteen minutes you’ll learn three things: how to check whether a strain is covered by the EU rules; which documents to keep; and when you must declare.</p>
+      <p>Before we start, think of one strain you’re working with right now. Do you know where it was collected, and when? Keep it in mind. You’ll check it at the end. And as you go, look out for the small blue info buttons on some slides. Click them for more detail on the topic and links to further information.</p>
+
+      <h3>Slide 3 – The deal</h3>
+      <p>Why do these rules exist? The Nagoya Protocol is a legally binding international agreement, adopted in 2010 under the UN Convention on Biological Diversity. It sets the rules for access to genetic resources, and for sharing the benefits from their use fairly. This is known as “access and benefit-sharing”.</p>
+      <p>It starts from one principle: countries have sovereign rights over their genetic resources, and that includes the microbes in their soils, plants and waters. So, under the Protocol, many countries require two things before you collect or use them: their permission, and terms you agree on, usually including a fair share of any benefits.</p>
+      <p>Since 12 October 2014, the EU has had its own side of the deal: Regulation 511/2014 makes researchers in the EU check, and be able to show, that the provider country’s rules were followed. Germany itself joined the Protocol on 20 July 2016, but for researchers in Germany, the EU rules have applied since 2014. But who exactly has to do this?</p>
+
+      <h3>Slide 4 – Are you a user?</h3>
+      <p>Anyone who studies or uses genetic resources is a potential user. You are a user if you do research and development on the genetic or biochemical composition of a strain. That includes basic research, not just product development. Knocking out genes, using RNA-seq to find out what a gene cluster does, screening for new compounds: all of these count as utilisation.</p>
+      <p>However, some everyday activities do not count on their own. Sequencing the 16S rRNA gene to identify an isolate, or using a strain as a positive or negative control, falls outside the scope of utilisation. But pay attention: once you move from identifying a strain to studying its genes, it counts as utilisation.</p>
+
+      <h3>Slide 5 – Check yourself</h3>
+      <p>Let’s check. Follow one isolate from fieldwork in Spain to your lab in Munich. At which step does your work fall under the Nagoya rules?</p>
+
+      <h3>Slide 6 – Scope test</h3>
+      <p>So when is a strain covered? Ask four questions, in order. One: was it accessed, that is, taken from its country of origin, on or after 12 October 2014? Two: does it come from a country that is a Party to the Nagoya Protocol and has access rules? Three: is it outside the excluded categories, such as human material? Four, which you’ve just seen: are you doing research on its genes or biochemistry?</p>
+      <p>Four yeses, and the EU Regulation applies: you need to do due diligence. A single no, and it doesn’t, but the provider country’s own rules may still apply.</p>
+
+      <h3>Slide 7 – Due diligence</h3>
+      <p>Your strain is in scope. What now? Due diligence is the core duty of the EU Regulation. You must be able to show that the strain was accessed legally, and that you use it within the agreed terms. It comes down to three verbs.</p>
+      <p>Seek: get the permit and the agreed terms from the provider country. If the country has published the permit in the ABS Clearing-House, it becomes a certificate of compliance: a single number that proves you have both. Many countries don’t publish them, so otherwise record the key facts yourself.</p>
+      <p>Keep: store them for 20 years after you stop using the strain, somewhere that survives staff changes.</p>
+      <p>Pass on: if you share the strain, the documents go with it.</p>
+      <p>If the documents are missing or unclear, get a permit and agreed terms from the provider country, or stop using the strain. And here’s a shortcut: order from a registered collection, which has already done the search for you.</p>
+
+      <h3>Slide 8 – When to declare</h3>
+      <p>The declaration is the final step. It isn’t another permit: you tell your own national authority that you’ve done due diligence. So when do you have to declare? At two checkpoints.</p>
+      <p>First, research funding. If your project uses in-scope strains and has external funding, you submit a due diligence declaration after you receive the first instalment and before the final report. Projects funded only from internal budgets don’t trigger this checkpoint, but due diligence itself still applies.</p>
+      <p>Second, once, when your research reaches the final development of a product, for example before you seek market approval.</p>
+      <p>You make one declaration, usually online through the EU’s DECLARE tool, which forwards it to your national authority. In Germany, that’s the Federal Agency for Nature Conservation, the BfN.</p>
+
+      <h3>Slide 9 – Three kinds of paperwork</h3>
+      <p>Before we try a case: what paperwork actually moves with a strain? Say a Spanish lab sends you a strain. There are three kinds of paperwork. Only the first is Nagoya: the Spanish access authorisation and its agreed terms, which your lab applies for. Then the material transfer agreement, the contract between the two labs. It should carry the permit’s conditions, but it doesn’t replace the permit. And finally, biosafety and shipping rules, which are about moving the strain safely. After it arrives, keep the documents, and declare only at the checkpoints.</p>
+
+      <h3>Slide 10 – Worked case</h3>
+      <p>Time to apply it. Here’s a lab in Munich with an external grant and four strains. Two countries are involved: Spain, which requires an access authorisation for research, and Germany, which is a Party but has no access rules. For each strain, run the four questions: is it in scope, and what must the lab do? Strain D should look familiar. From here on, every slide until the wrap-up is a question for you to answer, starting with one for each strain.</p>
+
+      <p class="skipnote">Slides 11–20 are questions and have no narration.</p>
+
+      <h3>Slide 21 – Wrap-up</h3>
+      <p>By now you should be familiar with the Nagoya Protocol and what it means for your work. Remember the box of strains from the start? Isolated in Spain in 2019, after Spain’s access rules began, and you want to do research on its genes. So it’s in scope. Before Monday, ask your postdoc for the Spanish access authorisation and agreed terms. If there aren’t any, apply to Spain, or leave the box in the freezer.</p>
+      <p>Three things to take away: four questions decide the scope; seek, keep and pass on the documents; and declare at two checkpoints.</p>
+      <p>And the strain you thought of at the start? Run the four questions on it this week. If you’re unsure, the links below will help. Thanks for taking part. Please leave two minutes of feedback.</p>
+    </details>
+  </section>
+
+  <section aria-labelledby="sources-h">
+    <h2 id="sources-h">Sources and further reading</h2>
+    <ul class="sources">
+      <li><a href="https://eur-lex.europa.eu/eli/reg/2014/511/oj">Regulation (EU) No 511/2014</a> on compliance measures for users from the Nagoya Protocol in the Union</li>
+      <li><a href="https://eur-lex.europa.eu/eli/reg_impl/2015/1866/oj">Implementing Regulation (EU) 2015/1866</a>: registered collections, best practices and monitoring</li>
+      <li>European Commission, <a href="https://environment.ec.europa.eu/topics/nature-and-biodiversity/access-and-benefit-sharing_en">Access and benefit-sharing</a>: guidance on the scope and core obligations of the Regulation, and the DECLARE tool</li>
+      <li><a href="https://absch.cbd.int/">ABS Clearing-House</a>: country profiles, national measures and certificates of compliance</li>
+    </ul>
+  </section>
+
+  <section aria-label="Disclaimer">
+    <p class="disclaimer"><strong>Educational resource, not legal advice.</strong> Rules and national measures change. For a real case, check the ABS Clearing-House and contact your institution’s compliance office or your national competent authority.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Created by <strong>Filipe José Dias Vieira, PhD</strong> · Built with <a href="https://lumi.education/">Lumi</a> and <a href="https://h5p.org/">H5P</a> · Last updated November 2026</p>
+    <p>Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/filipejdvieira/nagoya-protocol-module">Source on GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+  // Fit the module's frame to its content (works because the module is on the same site).
+  (function () {
+    var frame = document.querySelector(".player iframe");
+    function fit() {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc || !doc.body) return;
+        var h = Math.ceil(doc.body.getBoundingClientRect().height);
+        if (h < 100) h = doc.documentElement.scrollHeight;
+        if (h > 100) {
+          frame.style.aspectRatio = "auto";
+          frame.style.minHeight = "0";
+          frame.style.height = h + "px";
+        }
+      } catch (e) { /* different origin: keep the default 16:9 frame */ }
+    }
+    frame.addEventListener("load", function () {
+      fit();
+      try {
+        new ResizeObserver(fit).observe(frame.contentDocument.body);
+      } catch (e) {}
+      setTimeout(fit, 1500);
+    });
+    window.addEventListener("resize", function () { setTimeout(fit, 300); });
+  })();
+
+  // Paste your Tally form link between the quotes. While it is empty, the feedback box stays hidden.
+  var FEEDBACK_URL = "";
+  if (FEEDBACK_URL) {
+    document.getElementById("feedback-link").href = FEEDBACK_URL;
+  } else {
+    document.getElementById("feedback-section").hidden = true;
+  }
+</script>
+</body>
+</html>
